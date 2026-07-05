@@ -1,1 +1,322 @@
-# stargreensuplementos
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seja Creator — Star Green</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep:   #1C3A26;
+    --forest: #375e31;
+    --mid:    #678755;
+    --pale:   #cadbb7;
+    --cream:  #E8EDE2;
+    --ink:    #282829;
+    --white:  #ffffff;
+    --cb:     rgba(255,255,255,0.10);
+    --cbg:    rgba(255,255,255,0.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{background:var(--deep);}
+  body{font-family:'Poppins',sans-serif;background:var(--deep);color:var(--white);min-height:100vh;display:flex;justify-content:center;-webkit-font-smoothing:antialiased;}
+  body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 70% 40% at 80% 10%,rgba(103,135,85,.28) 0%,transparent 60%),radial-gradient(ellipse 50% 30% at 10% 80%,rgba(55,94,49,.35) 0%,transparent 60%);pointer-events:none;z-index:0;}
+  .page{width:100%;max-width:420px;padding:0 0 48px;position:relative;z-index:1;}
+
+  .header{background:var(--cream);border-radius:0 0 32px 32px;padding:28px 28px 22px;text-align:center;}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--mid);text-decoration:none;margin-bottom:14px;}
+  .back svg{width:14px;height:14px;}
+  .logo{width:160px;display:block;margin:0 auto 8px;}
+  .tagline{font-size:12px;font-weight:500;color:var(--mid);letter-spacing:.04em;}
+
+  /* hero banner */
+  .creator-hero{margin:16px 14px 12px;background:linear-gradient(135deg,rgba(103,135,85,.55) 0%,rgba(55,94,49,.88) 60%);border:1.5px solid rgba(202,219,183,.18);border-radius:20px;padding:24px 22px;position:relative;overflow:hidden;}
+  .creator-hero::before{content:"";position:absolute;top:0;right:0;bottom:0;width:55%;background:radial-gradient(ellipse 80% 60% at 80% 40%,rgba(202,219,183,.20) 0%,transparent 70%);pointer-events:none;}
+  .creator-hero::after{content:"";position:absolute;bottom:22px;right:52px;width:6px;height:6px;border-radius:50%;background:rgba(202,219,183,.75);box-shadow:0 0 14px 5px rgba(202,219,183,.3);}
+  .hero-icon{width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;color:var(--pale);margin-bottom:14px;}
+  .hero-icon svg{width:24px;height:24px;}
+  .creator-hero h2{font-size:18px;font-weight:800;line-height:1.3;margin-bottom:8px;position:relative;z-index:1;}
+  .creator-hero h2 em{font-style:normal;color:var(--pale);}
+  .creator-hero p{font-size:12.5px;color:rgba(255,255,255,.70);line-height:1.6;position:relative;z-index:1;}
+
+  /* perks */
+  .section-label{display:flex;align-items:center;gap:8px;padding:18px 20px 10px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--pale);opacity:.8;}
+  .section-label svg{width:14px;height:14px;flex-shrink:0;}
+  .section-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(202,219,183,.3),transparent);}
+
+  .perks{display:flex;flex-direction:column;gap:10px;padding:0 14px;}
+  .perk{display:flex;align-items:center;gap:14px;background:var(--cbg);border:1.5px solid var(--cb);border-radius:16px;padding:13px 16px;}
+  .perk-icon{flex-shrink:0;width:36px;height:36px;border-radius:10px;background:rgba(202,219,183,.10);border:1px solid rgba(202,219,183,.16);display:flex;align-items:center;justify-content:center;color:var(--pale);}
+  .perk-icon svg{width:18px;height:18px;}
+  .perk p{font-size:13px;font-weight:600;color:var(--white);}
+  .perk span{font-size:11.5px;color:rgba(255,255,255,.55);font-weight:400;}
+
+  /* form */
+  .form-card{margin:14px 14px 0;background:var(--cbg);border:1.5px solid var(--cb);border-radius:20px;padding:22px 18px;}
+  .form-title{font-size:15px;font-weight:700;margin-bottom:16px;}
+
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+  label{font-size:12px;font-weight:600;color:rgba(255,255,255,.70);letter-spacing:.03em;}
+  label .opt{font-weight:400;opacity:.65;}
+  input,select,textarea{font-family:'Poppins',sans-serif;font-size:14px;color:var(--white);background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px;outline:none;transition:border-color .15s,background .15s;-webkit-appearance:none;}
+  input::placeholder,textarea::placeholder{color:rgba(255,255,255,.30);}
+  select option{background:#2a4a2e;color:var(--white);}
+  input:focus,select:focus,textarea:focus{border-color:var(--pale);background:rgba(255,255,255,.10);}
+  textarea{resize:vertical;min-height:76px;line-height:1.5;}
+
+  .error-text{font-size:11.5px;color:#f08080;display:none;}
+  .field.invalid input,.field.invalid select,.field.invalid textarea{border-color:#c0392b;}
+  .field.invalid .error-text{display:block;}
+
+  button[type="submit"]{width:100%;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;color:var(--deep);background:var(--pale);border:none;border-radius:14px;padding:15px 20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .15s,transform .1s;margin-top:4px;}
+  button[type="submit"]:hover{background:var(--white);}
+  button[type="submit"]:active{transform:scale(.99);}
+  button[type="submit"]:disabled{opacity:.55;cursor:not-allowed;}
+
+  .spinner{width:16px;height:16px;border:2px solid rgba(28,58,38,.3);border-top-color:var(--deep);border-radius:50%;animation:spin .7s linear infinite;display:none;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  button.loading .spinner{display:inline-block;}
+  button.loading .btn-label{display:none;}
+
+  .form-msg{font-size:12.5px;color:#f08080;text-align:center;margin-top:10px;display:none;}
+  .form-msg.visible{display:block;}
+  .form-msg.success{color:#84966b;}
+
+  .success{display:none;text-align:center;background:var(--cbg);border:1.5px solid var(--cb);border-radius:20px;padding:36px 22px;margin:14px 14px 0;}
+  .success.visible{display:block;}
+  form.hidden{display:none;}
+  .success-icon{width:54px;height:54px;margin:0 auto 14px;border-radius:50%;background:rgba(202,219,183,.12);border:1px solid rgba(202,219,183,.2);color:var(--pale);display:flex;align-items:center;justify-content:center;}
+  .success-icon svg{width:26px;height:26px;}
+  .success h2{font-size:18px;font-weight:800;margin-bottom:8px;}
+  .success p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:18px;}
+  .success a{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--pale);text-decoration:none;}
+  .success a svg{width:14px;height:14px;}
+
+  .footer-bar{display:flex;margin:20px 14px 0;border:1.5px solid var(--cb);border-radius:14px;overflow:hidden;background:var(--cbg);}
+  .footer-item{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:11px 6px;font-size:10px;font-weight:600;color:rgba(255,255,255,.50);border-right:1px solid var(--cb);text-align:center;}
+  .footer-item:last-child{border-right:none;}
+  .footer-item svg{width:12px;height:12px;color:var(--pale);flex-shrink:0;}
+
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <a class="back" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      Voltar
+    </a>
+    <img class="logo" src="logo_transparent.png" alt="Star Green Suplementos">
+    <p class="tagline">Performance • wellness • saúde</p>
+  </div>
+
+  <div class="creator-hero">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-9A2 2 0 0 0 3.5 6v12a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><path d="M16.5 8.5 21 6v12l-4.5-2.5"/></svg>
+    </div>
+    <h2>Crie conteúdo com a <em>Star Green</em></h2>
+    <p>Você recebe produtos da nossa linha para testar e mostrar pro seu público — sem precisar vender nada.</p>
+  </div>
+
+  <div class="section-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    O que você ganha
+  </div>
+
+  <div class="perks">
+    <div class="perk">
+      <div class="perk-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+      </div>
+      <div>
+        <p>Produtos Star Green gratuitos</p>
+        <span>Receba kits e lançamentos pra testar</span>
+      </div>
+    </div>
+    <div class="perk">
+      <div class="perk-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+      </div>
+      <div>
+        <p>Parceria com a marca</p>
+        <span>Sua bio ligada diretamente à Star Green</span>
+      </div>
+    </div>
+    <div class="perk">
+      <div class="perk-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
+      </div>
+      <div>
+        <p>Liberdade criativa total</p>
+        <span>Sem roteiro fixo — cria do seu jeito</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <p class="form-title">Faça seu cadastro</p>
+    <form id="creator-form" novalidate>
+
+      <div class="field" data-field="nome">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" autocomplete="name">
+        <span class="error-text">Informa seu nome.</span>
+      </div>
+      <div class="field" data-field="whatsapp">
+        <label for="whatsapp">WhatsApp</label>
+        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(85) 99999-9999" inputmode="tel">
+        <span class="error-text">Informa um WhatsApp com DDD.</span>
+      </div>
+      <div class="field" data-field="cidade">
+        <label for="cidade">Cidade e estado</label>
+        <input type="text" id="cidade" name="cidade" placeholder="Ex: Fortaleza, CE">
+        <span class="error-text">Informa sua cidade.</span>
+      </div>
+      <div class="field" data-field="instagram">
+        <label for="instagram">Instagram</label>
+        <input type="text" id="instagram" name="instagram" placeholder="@seuperfil">
+        <span class="error-text">Informa seu Instagram.</span>
+      </div>
+      <div class="field" data-field="tiktok">
+        <label for="tiktok">TikTok <span class="opt">(opcional)</span></label>
+        <input type="text" id="tiktok" name="tiktok" placeholder="@seuperfil">
+      </div>
+      <div class="field" data-field="seguidores">
+        <label for="seguidores">Faixa de seguidores</label>
+        <select id="seguidores" name="seguidores">
+          <option value="" disabled selected>Selecione</option>
+          <option>Até 1 mil</option>
+          <option>1 mil a 5 mil</option>
+          <option>5 mil a 20 mil</option>
+          <option>20 mil a 100 mil</option>
+          <option>Mais de 100 mil</option>
+        </select>
+        <span class="error-text">Escolhe sua faixa.</span>
+      </div>
+      <div class="field">
+        <label for="sobre">Sobre seu conteúdo <span class="opt">(opcional)</span></label>
+        <textarea id="sobre" name="sobre" placeholder="Me conta sobre o que você posta e por que quer ser parceiro..."></textarea>
+      </div>
+
+      <button type="submit">
+        <span class="spinner"></span>
+        <span class="btn-label">Enviar cadastro</span>
+      </button>
+      <p class="form-msg" id="form-msg"></p>
+    </form>
+
+    <div class="success" id="success">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h2>Cadastro recebido!</h2>
+      <p>Nossa equipe vai dar uma olhada e entrar em contato pelo WhatsApp em breve.</p>
+      <a href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        Voltar para o início
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="footer-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Marca responsável
+    </div>
+    <div class="footer-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg>
+      Qualidade premium
+    </div>
+    <div class="footer-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Resultados reais
+    </div>
+  </div>
+
+</div>
+<script>
+  const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+  const ACCESS_KEY = '6b3194c7-0e66-4b84-8f92-c2be9d16cdd5';
+  const form = document.getElementById('creator-form');
+  const success = document.getElementById('success');
+  const formMsg = document.getElementById('form-msg');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  function setError(name,has){form.querySelector(`[data-field="${name}"]`)?.classList.toggle('invalid',has);}
+
+  function validate(data){
+    let ok=true;
+    ['nome','whatsapp','cidade','instagram','seguidores'].forEach(n=>{
+      const bad=!(data[n]||'').trim();
+      setError(n,bad);
+      if(bad)ok=false;
+    });
+    return ok;
+  }
+
+  function validateWhatsApp(whatsapp){
+    const cleaned=whatsapp.replace(/\D/g,'');
+    return cleaned.length>=10;
+  }
+
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    formMsg.classList.remove('visible','success');
+    const data=Object.fromEntries(new FormData(form).entries());
+    if(!validate(data))return;
+    
+    if(!validateWhatsApp(data.whatsapp)){
+      setError('whatsapp',true);
+      return;
+    }
+    
+    submitBtn.disabled=true;
+    submitBtn.classList.add('loading');
+    try{
+      const res=await fetch(FORM_ENDPOINT,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({
+          access_key:ACCESS_KEY,
+          subject:'🎬 Novo cadastro - Creator Star Green',
+          from_name:'Star Green Hub',
+          tipo:'Creator',
+          nome:data.nome||'',whatsapp:data.whatsapp||'',
+          cidade:data.cidade||'',instagram:data.instagram||'',
+          tiktok:data.tiktok||'',seguidores:data.seguidores||'',
+          sobre:data.sobre||''
+        })
+      });
+      if(!res.ok)throw new Error();
+      form.classList.add('hidden');
+      success.classList.add('visible');
+    }catch{
+      formMsg.textContent='❌ Erro ao enviar. Tenta novamente em alguns segundos.';
+      formMsg.classList.add('visible');
+    }finally{
+      submitBtn.disabled=false;
+      submitBtn.classList.remove('loading');
+    }
+  });
+
+  form.querySelectorAll('input,select,textarea').forEach(el=>{
+    el.addEventListener('input',()=>el.closest('.field')?.classList.remove('invalid'));
+  });
+
+  // Formatação de WhatsApp
+  const whatsappInput=document.getElementById('whatsapp');
+  whatsappInput?.addEventListener('input',e=>{
+    let value=e.target.value.replace(/\D/g,'');
+    if(value.length>11)value=value.slice(0,11);
+    if(value.length>=2){
+      value=`(${value.slice(0,2)}) ${value.slice(2,7)}-${value.slice(7)}`;
+    }
+    e.target.value=value;
+  });
+</script>
+</body>
+</html># stargreensuplementos
